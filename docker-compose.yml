@@ -1,0 +1,43 @@
+services:
+  userservice.web:
+    image: userserviceweb:shop
+    build:
+      context: ./UserService
+      dockerfile: Dockerfile
+    ports:
+      - "2000:2000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=2000 
+      - ASPNETCORE_URLS=http://*:2000
+    depends_on:
+      - db
+
+  productservice.web:
+    image: productserviceweb:shop
+    build:
+      context: ./ProductService
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=3000
+      - ASPNETCORE_URLS=http://*:3000
+    depends_on:
+      - db
+      
+  db:
+    container_name: postgres_user
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=8653
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:      
+
