@@ -41,7 +41,7 @@ Implements CRUD operations with user:
    - Getting all users
    - Getting user by id
    - Update user
-![alt text](image.png)
+![alt text](image-2.png)
 
 Supports Cookie to store JWToken and another info after user's login
 
@@ -61,10 +61,9 @@ Support authentication and authorisation by JWT access token
    - Create, update and delete products is allowed only for authorized users
    - Update and delete products can only owner
 
-![alt text](image-2.png)
+![alt text](image.png)
 
 ### Tests
 
 Main functionality is covered by using Unit tests
-
 ![alt text](image-3.png)
